@@ -3,8 +3,8 @@ import { PlacesState } from "./state";
 import { StateInterface } from "../index";
 
 const actions: ActionTree<PlacesState, StateInterface> = {
-    someAction() {
-
+    someAction(/* {commit}, payload */) {
+        // a line to prevent linter errors
     }
 }
 
