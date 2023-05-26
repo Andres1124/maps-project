@@ -1,5 +1,6 @@
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, watch } from "vue";
 import SearchResults from "@/components/searchresults/SearchResults.vue";
+import { usePlacesStore } from "@/composables";
 
 export default defineComponent({
     name: 'SearchBar',
@@ -7,25 +8,19 @@ export default defineComponent({
     setup() {
 
         const debounceTimeOut =ref();
-        const debouncedValue = ref('');        
+        const debouncedValue = ref('');
+        const { searchPlacesByTerm } = usePlacesStore();  
+        
+        watch(debouncedValue, (value) => {
+            if (debounceTimeOut.value) clearTimeout(debounceTimeOut.value);
+
+            debounceTimeOut.value = setTimeout(() => {
+                searchPlacesByTerm(value);
+            }, 500);
+        })
 
         return {
             debouncedValue,
-
-            searchTerm: computed({
-                get() {
-                    return debouncedValue.value
-                },
-                set(val: string) {
-
-                    if (debounceTimeOut.value) clearTimeout(debounceTimeOut.value)
-
-                    debounceTimeOut.value = setTimeout(() => {
-                        debouncedValue.value = val
-                    }, 500)
-
-                }
-            })
 
         }
     }

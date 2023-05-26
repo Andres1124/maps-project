@@ -4,7 +4,6 @@ import { StateInterface } from "../index";
 
 const actions: ActionTree<PlacesState, StateInterface> = {
     getInitialLocation({commit}) {
-        // TODO: colocar loading
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => commit('setLngLat', {lng: coords.longitude, lat: coords.latitude}),
             (err) => {
@@ -12,6 +11,10 @@ const actions: ActionTree<PlacesState, StateInterface> = {
                 throw new Error("No gelocation");
             }
         )
+    },
+
+    async searchPlacesByTerm({ commit, state }, query: string) {
+        console.log('Vuex:' + query);
     }
 }
 
