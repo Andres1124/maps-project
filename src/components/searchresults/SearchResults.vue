@@ -17,6 +17,7 @@
                 <p>{{ place.place_name }}</p>
                 <div class="mt-4">
                     <button 
+                        @click.self="getRouteDirections(place)"
                         class="border px-4 py-2 rounded"
                         :class="place.id === activePlace ? 'hover:bg-white hover:text-black' : ''"
                         >Direcciones</button>
