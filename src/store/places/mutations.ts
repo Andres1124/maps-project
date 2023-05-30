@@ -9,12 +9,12 @@ const mutation: MutationTree<PlacesState> = {
     },
 
     setIsLoadingPlaces(state) {
-        state.isLoadingPLaces = true;
+        state.isLoadingPlaces = true;
     },
 
     setPlaces(state, places: Feature[]) {
         state.places = places;
-        state.isLoadingPLaces = false;
+        state.isLoadingPlaces = false;
     }
 }
 
