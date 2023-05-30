@@ -10,11 +10,16 @@
             <li 
                 v-for="place in places"
                 :key="place.id"
-                class="cursor-pointer p-2 border-t hover:bg-gray-100 text-left">
+                @click="onPlaceClicked(place)"
+                :class="{'bg-sky-500 text-white': place.id === activePlace, 'hover:bg-gray-100': place.id !== activePlace}"
+                class="cursor-pointer p-2 border-t  text-left">
                 <h5 class="font-bold pb-4">{{ place.text }}</h5>
                 <p>{{ place.place_name }}</p>
                 <div class="mt-4">
-                    <button class="border px-4 py-2 rounded">Direcciones</button>
+                    <button 
+                        class="border px-4 py-2 rounded"
+                        :class="place.id === activePlace ? 'hover:bg-white hover:text-black' : ''"
+                        >Direcciones</button>
                 </div>
             </li>
         </ul>
