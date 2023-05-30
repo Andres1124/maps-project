@@ -3,7 +3,6 @@
 <template>
     <div v-if="!isUserLocationReady" 
         class="loading-map text-white w-full h-full fixed top-0 left-0 z-[9999] flex justify-center items-center">
-            class="loading-map text-white  fixed top-0 left-0 z-[9999] flex justify-center items-center">
         <div class="text-center">
             <h3 class="font-bold text-xl">Espere por favor</h3>
             <span class="font-bold text-xl">Localizando...</span>
