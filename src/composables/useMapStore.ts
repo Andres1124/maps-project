@@ -22,6 +22,7 @@ export const useMapStore = () => {
         // Mutations
         setMap: (map: mapboxgl.Map) => store.commit('map/setMap', map),
         setPlacesMarkers: (places: Feature[]) => store.commit('map/setPlaceMarkers', places)
+        
         // Actions
     }
 
